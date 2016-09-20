@@ -1,0 +1,172 @@
+//from server to app
+//ANSWERS FOR GET
+//JSON1 : song (answer to getSong)
+{
+	"info" : "song",
+	"id" : 234134,
+	"artist" : "Justin Bieber",
+	"title" : "Baby",
+	"duration" : "234.23",
+	"spotifyRef" : "spotify:track:0uIpyzeR7wSmDCErymJHmc"
+}
+
+//JSON2 : room (answer to getRoom)
+{
+	"info" : "room",
+	"id" : 1298739812,
+	"creator" : "idOfCreator",
+	"name" : "Super Cool Room",
+	"playlist" : [
+		12341234,
+		321321,
+		12314545,
+		54321545
+	],
+	"addedBy" : [
+		"userID1",
+		"userID2",
+		"userID3",
+		"userID4"
+	],
+	"members" : [
+		"userID1",
+		"userID2",
+		"userID3",
+		"userID4",
+		"userID5",
+		"userID6",
+		"userID7"
+	]
+}
+
+//JSON3 : user (answer to getUser)
+{
+	"info" : "user",
+	"id" : "hugo-bonnome", // id is a string because it's the spotify id
+	"name" : "Hugo",
+	"rooms" : [
+		{ "id" : 10293801, "name" : "cool room" },
+		{ "id" : 23873784, "name" : "nice room" },
+		{ "id" : 97432848, "name" : "best room" }
+	]
+}
+
+//JSON4 : wrong get
+//if the id doesn't exist
+{
+	"error" : "user/room/song does not exist",
+	"id" : 1231253
+	//or "id": "hugo-bonnome"
+	//"id" could be String or Integer
+}
+
+
+//ANSWERS FOR POST
+//JSON5 : add user/create room
+{
+	"added" : true,
+	"id" : 1231253
+	//or "id": "hugo-bonnome"
+	//"id" could be String or Integer
+}
+
+//JSON6 : fail to add user/create room
+{
+	"added" : false, 
+	"error" : "user/room already exists",
+	"id" : 1231253
+	//or "id": "hugo-bonnome"
+	//"id" could be String or Integer
+}
+
+//JSON7 : fail to create room because creator is not a valid id
+{
+	"added" : false,
+	"error" : "creator does not exist",
+	"id" : "hugo-fbidbfsidfhb"
+}
+
+//JSON8 : add song
+{
+	"added" : true,
+	"song" : 3657436,
+	"room" : 5738783,
+	"addedBy" : "hugo-bonnome"
+}
+
+//JSON9 : fail to add song
+{
+	"added" : false, 
+	"error" : "user/room does not exists",
+	"id" : 1231253
+	//or "id": "hugo-bonnome"
+	//"id" could be String or Integer
+}
+
+//JSON10.1 : fail to join room (because user id doesn't exist)
+{
+	"added": false, 
+	"error" : "user does not exists",
+	"id" : "hugo-bonnome"
+}
+
+//JSON10.2 : fail to join room (because no room has that name)
+{
+	"added": false, 
+	"error" : "room does not exists",
+	"name" : "awesome room djkfhsdf"
+}
+
+//JSON10.3 : fail to join room because wrong password
+{
+	"added" : false, 
+	"error" : "wrong password",
+	"id" : 1231253, //id of the room
+	"password" : "itriedawrongpassword"
+}
+
+
+
+//from app to server
+//JSON11 : getUser (HTTP GET)
+//Not a JSON
+ 	id = "hugo-bonnome"
+
+//JSON12 : addUser (HTTP POST)
+{
+	"id" : "hugo-bonnome",
+	"name" : "Hugo"
+}
+
+//JSON13 : getSong (HTTP GET)
+//Not a JSON
+	id = 123456789
+
+
+//JSON14 : addSong (HTTP POST)
+{
+	"room" : 83728738,
+	"artist" : "Justin Bieber",
+	"title" : "Baby",
+	"duration" : "234.23",
+	"spotifyRef" : "spotify:track:0uIpyzeR7wSmDCErymJHmc",
+	"addedBy" : "hugo-bonnome" //id
+}
+
+//JSON15 : getRoom (HTTP GET)
+//Not a JSON
+	id = 382732873
+
+//JSON16 : createRoom (HTTP POST)
+{
+	"creator" : "hugo-bonnome", //id
+	"name" : "Awesome Room",
+	"password": "1234" //just give an empty string if no password
+}
+
+//JSON17 : joinRoom (HTTP POST)
+{
+	"user" : "hugo-bonnome", //id
+	"name" : "Awesome Room",
+	"password" : "1234"
+}

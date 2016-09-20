@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <TextView
+        android:id="@+id/room_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gucci"
+        android:textColor="#000000"
+        style="@style/TextAppearance.AppCompat.Headline"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+
+
+</RelativeLayout>
